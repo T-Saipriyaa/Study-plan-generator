@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Plan Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .container {
+            width: 70%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .study-plan {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .study-plan h2 {
+            color: #4CAF50;
+        }
+
+        .study-plan ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .study-plan ul li {
+            background-color: #f4f7fc;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Study Plan Result</h1>
+    </div>
+
+    <div class="container">
+        <h2>Your Study Plan for {{ subject }}</h2>
+        <div class="study-plan">
+            <h3>Study Plan</h3>
+            {% if study_plan %}
+                <ul>
+                    {% for day in range(study_plan|length) %}
+                        <li><strong>Day {{ day + 1 }}:</strong> {{ study_plan[day] | join(', ') }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No study plan generated. Please check your input.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Study Plan Generator - Made with ♥️</p>
+    </div>
+
+</body>
+</html>
